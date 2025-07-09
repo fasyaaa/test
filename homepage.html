@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
-    <link rel="stylesheet" href="/styles/homepage.css" />
-    <link rel="stylesheet" href="/styles/profile.css" />
-    <link rel="stylesheet" href="/styles/fontCustom.css" />
-    <link rel="stylesheet" href="/styles/sidebarMobile.css" />
-    <link rel="icon" type="image/png" href="/assets/images/Orbit.png" />
+    <link rel="stylesheet" href="public/styles/homepage.css" />
+    <link rel="stylesheet" href="public/styles/profile.css" />
+    <link rel="stylesheet" href="public/styles/fontCustom.css" />
+    <link rel="stylesheet" href="public/styles/sidebarMobile.css" />
+    <link rel="icon" type="image/png" href="public/assets/images/Orbit.png" />
     <meta
       http-equiv="Cache-Control"
       content="no-cache, no-store, must-revalidate"
@@ -19,14 +19,14 @@
   <body>
     <!-- Hamburger Icon (Mobile Only) -->
     <div class="hamburger-icon-mobile" id="hamburgerMenu">
-      <img src="/assets/icons/hamburger.svg" alt="Menu" />
+      <img src="public/assets/icons/hamburger.svg" alt="Menu" />
     </div>
 
     <!-- Mobile Sidebar -->
     <div class="mobile-sidebar" id="mobileSidebar">
       <div class="mobile-sidebar-header">
         <img
-          src="/assets/images/Telkomsel-Orbit-Logo-White.png"
+          src="public/assets/images/Telkomsel-Orbit-Logo-White.png"
           class="mobile-logo"
         />
       </div>
@@ -41,7 +41,7 @@
           <% } else { %>
           <img
             class="avatar-image"
-            src="/assets/icons/profileIcon.svg"
+            src="public/assets/icons/profileIcon.svg"
             alt="Default Foto"
           />
           <% } %>
@@ -70,7 +70,7 @@
       <!-- SIDEBAR -->
       <div class="sidebar" id="mobileSidebar2">
         <div class="sidebar-logo">
-          <img src="/assets/images/Telkomsel-Orbit-Logo-White.png" alt="Logo" />
+          <img src="public/assets/images/Telkomsel-Orbit-Logo-White.png" alt="Logo" />
         </div>
 
         <div class="sidebar-avatar" id="avatarTrigger">
@@ -83,7 +83,7 @@
           <% } else { %>
           <img
             class="avatar-image"
-            src="/assets/icons/profileIcon.svg"
+            src="public/assets/icons/profileIcon.svg"
             alt="Default Foto"
           />
           <% } %>
@@ -142,7 +142,7 @@
           <div class="podium silver">
             <img
               class="trophy-image"
-              src="/assets/icons/silver.svg"
+              src="public/assets/icons/silver.svg"
               alt="Silver Trophy"
             />
             <div class="rank">2</div>
@@ -157,7 +157,7 @@
           <div class="podium gold">
             <img
               class="trophy-image"
-              src="/assets/icons/gold.svg"
+              src="public/assets/icons/gold.svg"
               alt="Gold Trophy"
             />
             <div class="rank">1</div>
@@ -172,7 +172,7 @@
           <div class="podium bronze">
             <img
               class="trophy-image"
-              src="/assets/icons/bronze.svg"
+              src="public/assets/icons/bronze.svg"
               alt="Bronze Trophy"
             />
             <div class="rank">3</div>
@@ -222,7 +222,7 @@
             <% } else { %>
             <img
               class="avatar-image"
-              src="/assets/icons/profileIcon.svg"
+              src="public/assets/icons/profileIcon.svg"
               alt="Default Foto"
             />
             <% } %>
@@ -296,7 +296,7 @@
           <% if (data[0].profilePicture) { %>
           <img src="/myorbit/profile/picture" alt="Foto Saat Ini" />
           <% } else { %>
-          <img src="/assets/icons/profileIcon.svg" alt="Foto Default" />
+          <img src="public/assets/icons/profileIcon.svg" alt="Foto Default" />
           <% } %>
         </div>
 
@@ -337,7 +337,7 @@
         topData: <%- topData %>
       };
     </script>
-    <script src="/js/mobileMenu.js"></script>
-    <script src="/js/profile.js"></script>
+    <script src="public/js/mobileMenu.js"></script>
+    <script src="public/js/profile.js"></script>
   </body>
 </html>
