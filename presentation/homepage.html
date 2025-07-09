@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles/homepage.css" />
+    <link rel="stylesheet" href="/styles/profile.css" />
+    <link rel="stylesheet" href="/styles/fontCustom.css" />
+    <link rel="stylesheet" href="/styles/sidebarMobile.css" />
+    <link rel="icon" type="image/png" href="/assets/images/Orbit.png" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+  </head>
+  <body>
+    <!-- Hamburger Icon (Mobile Only) -->
+    <div class="hamburger-icon-mobile" id="hamburgerMenu">
+      <img src="/assets/icons/hamburger.svg" alt="Menu" />
+    </div>
+
+    <!-- Mobile Sidebar -->
+    <div class="mobile-sidebar" id="mobileSidebar">
+      <div class="mobile-sidebar-header">
+        <img
+          src="/assets/images/Telkomsel-Orbit-Logo-White.png"
+          class="mobile-logo"
+        />
+      </div>
+      <div class="sidebar-avatar-mobile">
+        <a href="/myorbit/profile/info">
+          <% if (data[0].profilePicture) { %>
+          <img
+            class="avatar-image"
+            src="/myorbit/profile/picture"
+            alt="Foto Profil"
+          />
+          <% } else { %>
+          <img
+            class="avatar-image"
+            src="/assets/icons/profileIcon.svg"
+            alt="Default Foto"
+          />
+          <% } %>
+        </a>
+      </div>
+      <p class="profile-name-mobile">
+        <%= data[0].namaProfile.toUpperCase() %>
+      </p>
+      <p class="profile-detail-mobile">Group: <%= data[0].referralGroup %></p>
+      <p class="profile-detail-mobile">
+        <span class="status-indicator <%= status %>">●</span> <%= status %>
+      </p>
+      <div class="sidebar-buttons">
+        <a href="/myorbit/homepage"><button>Homepage</button></a>
+        <a href="/myorbit/profile"><button>Performance</button></a>
+        <a
+          href="https://drive.google.com/drive/folders/1hBgZ9q9wbwR2V5SJc_jQXABwjwUdVNJn"
+          ><button>Material Promo</button></a
+        >
+        <form action="/myorbit/logout" method="POST">
+          <button type="submit">Logout</button>
+        </form>
+      </div>
+    </div>
+    <div class="profile-layout">
+      <!-- SIDEBAR -->
+      <div class="sidebar" id="mobileSidebar2">
+        <div class="sidebar-logo">
+          <img src="/assets/images/Telkomsel-Orbit-Logo-White.png" alt="Logo" />
+        </div>
+
+        <div class="sidebar-avatar" id="avatarTrigger">
+          <% if (data[0].profilePicture) { %>
+          <img
+            class="avatar-image"
+            src="/myorbit/profile/picture"
+            alt="Foto Profil"
+          />
+          <% } else { %>
+          <img
+            class="avatar-image"
+            src="/assets/icons/profileIcon.svg"
+            alt="Default Foto"
+          />
+          <% } %>
+        </div>
+
+        <div class="sidebar-info">
+          <p class="profile-name">
+            <strong><%= data[0].namaProfile.toUpperCase() %></strong>
+          </p>
+          <p>Group: <%= data[0].referralGroup %></p>
+          <p>
+            <span class="status-indicator <%= status %>">●</span> <%= status %>
+          </p>
+        </div>
+
+        <div class="sidebar-buttons">
+          <a href="/myorbit/homepage">
+            <button>Homepage</button>
+          </a>
+          <a href="/myorbit/profile">
+            <button
+              class="<%= currentPath === '/myorbit/profile' ? 'active' : '' %>"
+            >
+              Performance
+            </button>
+          </a>
+          <a
+            href="https://drive.google.com/drive/folders/1hBgZ9q9wbwR2V5SJc_jQXABwjwUdVNJn"
+            ><button>Material Promo</button></a
+          >
+          <div class="sidebar-buttons">
+            <form action="/myorbit/logout" method="POST">
+              <button
+                type="submit"
+                class="<%= currentPath === '/myorbit/logout' ? 'active' : '' %>"
+              >
+                Logout
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- menu table -->
+      <div class="containerHomepage">
+        <div class="top-bar">
+          <h1><%= title %></h1>
+          <p class="subheading">
+            Top Agen Terbaik Bulan <%= monthName %> <%= year %>
+          </p>
+        </div>
+
+        <!-- PIAGAM / TROPHY SECTION -->
+        <div class="podium-wrapper">
+          <% if (top3Agents[1]) { %>
+          <div class="podium silver">
+            <img
+              class="trophy-image"
+              src="/assets/icons/silver.svg"
+              alt="Silver Trophy"
+            />
+            <div class="rank">2</div>
+            <div class="tooltip">
+              <div class="name"><%- top3Agents[1].namaProfile %></div>
+              <div class="tooltiptext">
+                <%= top3Agents[1].totalPenjualan %> Penjualan
+              </div>
+            </div>
+          </div>
+          <% } %> <% if (top3Agents[0]) { %>
+          <div class="podium gold">
+            <img
+              class="trophy-image"
+              src="/assets/icons/gold.svg"
+              alt="Gold Trophy"
+            />
+            <div class="rank">1</div>
+            <div class="tooltip">
+              <div class="name"><%- top3Agents[0].namaProfile %></div>
+              <div class="tooltiptext">
+                <%= top3Agents[0].totalPenjualan %> Penjualan
+              </div>
+            </div>
+          </div>
+          <% } %> <% if (top3Agents[2]) { %>
+          <div class="podium bronze">
+            <img
+              class="trophy-image"
+              src="/assets/icons/bronze.svg"
+              alt="Bronze Trophy"
+            />
+            <div class="rank">3</div>
+            <div class="tooltip">
+              <div class="name"><%- top3Agents[2].namaProfile %></div>
+              <div class="tooltiptext">
+                <%= top3Agents[2].totalPenjualan %> Penjualan
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </div>
+        <table class="leaderboard">
+          <thead>
+            <tr>
+              <th>Peringkat</th>
+              <th>Nama</th>
+              <th>Total Penjualan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% const fullList = [...top3Agents, ...leaderboard]; %> <%
+            fullList.forEach((item, index) => { %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= item.namaProfile %></td>
+              <td><%= item.totalPenjualan %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Modal Info Profil -->
+    <div id="infoModal" class="modal">
+      <div class="modal-content">
+        <span id="closeInfoModalBtn">&times;</span>
+        <div class="profile-modal-content">
+          <div class="avatar-containerHomepage modal-avatar" id="modalAvatar">
+            <% if (data[0].profilePicture) { %>
+            <img
+              class="avatar-image"
+              src="/myorbit/profile/picture"
+              alt="Foto Profil"
+            />
+            <% } else { %>
+            <img
+              class="avatar-image"
+              src="/assets/icons/profileIcon.svg"
+              alt="Default Foto"
+            />
+            <% } %>
+          </div>
+          <table class="profile-table vertical">
+            <tbody>
+              <tr>
+                <th>Nama</th>
+                <td><%= data[0].namaProfile %></td>
+              </tr>
+              <tr>
+                <th>Email</th>
+                <td><%= data[0].email %></td>
+              </tr>
+              <tr>
+                <th>Telepon</th>
+                <td><%= data[0].phoneNumber %></td>
+              </tr>
+              <tr>
+                <th>Kode Referral</th>
+                <td><%= data[0].codeReferral %></td>
+              </tr>
+              <tr>
+                <th>Valid From</th>
+                <td><%= moment(data[0].validFrom).format("DD MMMM YYYY") %></td>
+              </tr>
+              <tr>
+                <th>Valid Thru</th>
+                <td><%= moment(data[0].validThru).format("DD MMMM YYYY") %></td>
+              </tr>
+              <tr>
+                <th>Grapari</th>
+                <td><%= data[0].grapari %></td>
+              </tr>
+              <tr>
+                <th>Cluster</th>
+                <td><%= data[0].cluster %></td>
+              </tr>
+              <tr>
+                <th>Referral Group</th>
+                <td><%= data[0].referralGroup %></td>
+              </tr>
+              <tr>
+                <th>Branch</th>
+                <td><%= data[0].branch %></td>
+              </tr>
+              <tr>
+                <th>Region</th>
+                <td><%= data[0].region %></td>
+              </tr>
+              <tr>
+                <th>Area</th>
+                <td><%= data[0].area %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Upload Foto -->
+    <div id="photoModal" class="modal">
+      <div class="modal-content">
+        <span id="closeModalBtn">&times;</span>
+        <h4>
+          <%= data[0].profilePicture ? "Edit Foto Profil" : "Tambah Foto Profil"
+          %>
+        </h4>
+
+        <div class="current-photo-preview">
+          <% if (data[0].profilePicture) { %>
+          <img src="/myorbit/profile/picture" alt="Foto Saat Ini" />
+          <% } else { %>
+          <img src="/assets/icons/profileIcon.svg" alt="Foto Default" />
+          <% } %>
+        </div>
+
+        <form
+          action="/myorbit/profile/picture"
+          method="POST"
+          enctype="multipart/form-data"
+          class="photo-form"
+        >
+          <label for="photoInput" class="custom-file-label">Pilih File</label>
+          <input
+            type="file"
+            id="photoInput"
+            name="photo"
+            accept="image/*"
+            required
+          />
+          <button type="submit" class="btn-upload">
+            <%= data[0].profilePicture ? "Ganti Foto" : "Upload Foto" %>
+          </button>
+        </form>
+
+        <% if (data[0].profilePicture) { %>
+        <form
+          action="/myorbit/profile/picture/delete"
+          method="POST"
+          class="delete-form"
+        >
+          <button type="submit" class="btn-delete">Hapus Foto</button>
+        </form>
+        <% } %>
+      </div>
+    </div>
+
+    <script>
+      window.globalData = {
+        topLabels: <%- topLabels %>,
+        topData: <%- topData %>
+      };
+    </script>
+    <script src="/js/mobileMenu.js"></script>
+    <script src="/js/profile.js"></script>
+  </body>
+</html>
