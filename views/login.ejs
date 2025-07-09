@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/login.css" />
+    <link rel="stylesheet" href="/styles/fontCustom.css" />
+    <link rel="icon" type="image/png" href="/assets/images/Orbit.png" />
+    <script href="/js/login.js"></script>
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+  </head>
+  <body>
+    <div class="login-wrapper">
+      <!-- LEFT SIDE -->
+      <div class="login-welcome">
+        <div class="gradient-bg"></div>
+
+        <!-- <img
+          src="/assets/images/KV_test1.png"
+          alt="Gambar KV"
+          class="iklan-overlay"
+        /> -->
+        <img
+          src="/assets/images/KV-01.png"
+          alt="Gambar KV"
+          class="iklan-overlay"
+        />
+
+        <div class="welcome-text-wrapper">
+          <h1 class="welcome-text">
+            Internet Cepat Praktis <br />di Dalam dan Luar Rumah
+          </h1>
+        </div>
+        <div class="welcome-content">
+          <img
+            src="/assets/images/Telkomsel-Orbit-Logo-White.png"
+            alt="Orbit Logo"
+            class="orbit-logo"
+          />
+        </div>
+        <img
+          src="/assets/images/by-Telkom-Indonesia.png"
+          alt="Telkom Indonesia"
+          class="telkom-indonesia-logo"
+        />
+        <!-- <img src="/assets/images/product.png" alt="MIFI" class="produk1" />
+        <img src="/assets/images/product2.png" alt="MIFI" class="produk2" /> -->
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="login-form-container">
+        <div class="login-container">
+           <!-- Logo Orbit (Mobile) -->
+          <img src="/assets/images/Telkomsel-Orbit-Logo-Red.png" alt="orbitLogoMobile" class="orbitLogoMobile" />
+
+          <div class="login-header">
+            <h2>Selamat Datang</h2>
+            <p>Striker Sales Telkomsel Orbit.</p>
+          </div>
+          <% if (error) { %>
+          <div class="error"><%= error %></div>
+          <% } %>
+
+          <form method="POST" action="/myorbit/">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+            <input type="text" name="email" placeholder="Email" required />
+            <input
+              type="password"
+              name="codeReferral"
+              placeholder="Kode Referral"
+              required
+            />
+            <button type="submit">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

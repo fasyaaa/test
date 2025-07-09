@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="/styles/selling.css" />
+  <link rel="stylesheet" href="/styles/fontCustom.css" />
+  <link rel="icon" type="image/png" href="/assets/images/Orbit.png" />
+  <script src="/js/filter.js"></script>
+  <title><%= title %></title>
+</head>
+<body>
+  <div class="container">
+    <div class="top-bar">
+      <h1><%= title %></h1>
+      <a href="/myorbit/profile"><button>Kembali ke Profil</button></a>
+    </div>
+
+    <% if (user && user.namaProfile) { %>
+      <p class="user-info">
+        Data selling : <strong><%= user.namaProfile %></strong>
+      </p>
+    <% } %>
+
+    <!-- FILTER BULAN -->
+    <form method="GET" action="/myorbit/profile/selling" class="filter-form">
+  <label for="month">Filter Bulan:</label>
+  <select name="month" id="month">
+    <option value="">Semua</option>
+    <% 
+      const bulan = [
+        { num: 1, name: "Januari" },
+        { num: 2, name: "Februari" },
+        { num: 3, name: "Maret" },
+        { num: 4, name: "April" },
+        { num: 5, name: "Mei" },
+        { num: 6, name: "Juni" },
+        { num: 7, name: "Juli" },
+        { num: 8, name: "Agustus" },
+        { num: 9, name: "September" },
+        { num: 10, name: "Oktober" },
+        { num: 11, name: "November" },
+        { num: 12, name: "Desember" }
+      ];
+
+      bulan.forEach(b => {
+    %>
+      <option value="<%= b.num %>" <%= parseInt(month) === b.num ? "selected" : "" %>>
+        <%= b.name %>
+      </option>
+    <% }); %>
+  </select>
+</form>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+  <tr>
+    <th rowspan="2">Active Date</th>
+    <th rowspan="2">Region</th>
+    <th rowspan="2">Branch</th>
+    <th rowspan="2">Cluster</th>
+    <th rowspan="2">IMEI</th>
+    <th rowspan="2">MSISDN</th>
+    <th colspan="2">Device</th>
+    <th rowspan="2">Digipos ID</th>
+    <th colspan="2">Referral</th>
+    <th rowspan="2">Purchase Type</th>
+    <th colspan="2">Channel</th>
+  </tr>
+  <tr>
+    <th>Name</th>
+    <th>Brand</th>
+    <th>Code</th>
+    <th>Name</th>
+    <th>Sales</th>
+    <th>Group</th>
+  </tr>
+</thead>
+        <tbody>
+          <% data.forEach(selling => { %>
+            <tr>
+              <td><%= moment(selling.activeDate).format("DD MMMM") %></td>
+              <td><%= selling.region %></td>
+              <td><%= selling.branch %></td>
+              <td><%= selling.cluster %></td>
+              <td><%= selling.IMEI %></td>
+              <td><%= selling.MSISDN %></td>
+              <td><%= selling.deviceName %></td>
+              <td><%= selling.deviceBrand %></td>
+              <td><%= selling.digiposId %></td>
+              <td><%= selling.codeReferral %></td>
+              <td><%= selling.referralName %></td>
+              <td><%= selling.purchaseType %></td>
+              <td><%= selling.salesChannel %></td>
+              <td><%= selling.channelGroup %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

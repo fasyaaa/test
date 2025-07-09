@@ -1,0 +1,374 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/fonts/poppins/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/assets/fonts/poppins/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'TelkomselBatikSans';
+  src: url('/assets/fonts/telkomsel/TelkomselBatikSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'TelkomselBatikSans';
+  src: url('/assets/fonts/telkomsel/TelkomselBatikSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+:root {
+  --tc-red: #ff0025;
+  --tc-red-dark: #680024;
+  --tc-navy: #001a41;
+  --tc-orange: #fca12b;
+  --tc-white: #ffffff;
+  --tc-gray: #dadada;
+  --tc-text: #333;
+  --tc-shadow: rgba(0, 0, 0, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tc-white);
+}
+
+.login-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* BAGIAN KIRI */
+.login-welcome {
+  flex: 1.5;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 40px;
+  flex-direction: column;
+  overflow: hidden;
+
+}
+
+/* Warna dasar gradient */
+.gradient-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #680024, #8e0b2c, #b31536, #ff0025, #f8573c);
+  z-index: 0;
+}
+
+/* Gambar KV di atas gradient */
+.iklan-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  z-index: 1;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.produk1 {
+  position: absolute;
+  top: 70%;
+  right: 40%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  z-index: 2;
+  object-fit: contain;
+  opacity: 1;
+}
+
+.produk2 {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  z-index: 2;
+  object-fit: contain;
+  opacity: 1;
+}
+
+/* Konten (logo Orbit) */
+.welcome-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.welcome-text-wrapper {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  text-align: center;
+}
+
+.welcome-text {
+  font-family: 'TelkomselBatikSans', sans-serif;
+  font-size: 35px;
+  color: var(--tc-white);
+  line-height: 1.4;
+  text-align: center;
+}
+
+.orbit-logo {
+  max-width: 120px;
+  margin-bottom: 90px;
+  position: relative;
+  z-index: 3;
+}
+
+.telkom-indonesia-logo {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  max-width: 140px;
+  z-index: 3;
+  opacity: 0.9;
+}
+
+/* BAGIAN KANAN */
+.login-form-container {
+  flex: 1;
+  background: var(--tc-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  color: var(--tc-text);
+}
+
+.login-container {
+  background: transparent;
+  color: var(--tc-text);
+  max-width: 420px;
+  width: 100%;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-items: center;
+  text-align: justify;
+}
+
+.login-container h2 {
+  color: var(--tc-red);
+  font-size: 50px;
+  font-family: 'TelkomselBatikSans', sans-serif;
+  margin-bottom: 30px;
+  margin-top: 0px;
+  text-align: left;
+}
+
+.login-header {
+  align-self: stretch;
+  margin-bottom: 50px;
+}
+
+.login-header h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.login-header p {
+  margin: 0;
+  font-size: 16px;
+  color: var(--tc-text);
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 14px 16px;
+  margin: 15px 0;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  font-size: 15px;
+  background: var(--tc-white);
+  color: var(--tc-text);
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+input:focus {
+  border-color: var(--tc-orange);
+  outline: none;
+}
+
+button {
+  margin-top: 20px;
+  padding: 14px 20px;
+  width: 100%;
+  background-color: var(--tc-red);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--tc-orange);
+}
+
+.error {
+  color: var(--tc-red);
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .login-wrapper {
+    flex-direction: column;
+  }
+
+  .login-welcome,
+  .login-form-container {
+    flex: none;
+    width: 100%;
+    height: 50%;
+  }
+
+  .login-form-container {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container h2 {
+    font-size: 20px;
+  }
+
+  input {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+}
+
+/* Mobile responsive */
+.orbitLogoMobile {
+  max-width: 140px;
+  margin: 0 auto 30px auto;
+  display: none;
+}
+
+@media (max-width: 480px) {
+  body {
+    overflow: auto;
+    background-color: var(--tc-white);
+    display: block;
+    color: var(--tc-text);
+  }
+
+  .login-wrapper {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .login-welcome {
+    display: none;
+  }
+
+  .login-form-container {
+    width: 100%;
+    height: auto;
+    padding: 40px 20px;
+    justify-content: flex-start;
+    align-items: stretch;
+  }
+
+  .login-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .orbitLogoMobile {
+    display: block;
+  }
+
+  .login-header {
+    /* text-align: center; */
+    margin-bottom: 30px;
+  }
+
+  .login-header h2 {
+    font-size: 24px;
+    color: var(--tc-navy);
+    font-family: 'TelkomselBatikSans', sans-serif;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .login-header p {
+    font-size: 14px;
+    color: var(--tc-text);
+    margin: 0;
+    text-align: center;
+  }
+
+  input {
+    font-size: 14px;
+    padding: 12px 14px;
+    margin: 10px 0;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 12px 18px;
+    margin-top: 20px;
+  }
+
+  .error {
+    font-size: 13px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Info Profil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/profile.css" />
+    <link rel="stylesheet" href="/styles/fontCustom.css" />
+    <link rel="stylesheet" href="/styles/profileInfo.css" />
+    <link rel="icon" type="image/png" href="/assets/images/Orbit.png" />
+  </head>
+  <body>
+    <div class="profile-info-page">
+      <a href="/myorbit/homepage" class="btn-back">
+        <img src="/assets/icons/backButton.svg" alt="Back Button" />
+      </a>
+      <h2>Informasi Profil</h2>
+
+      <div class="modal-avatar">
+        <img
+          id="profileAvatar"
+          src="<%= data.profilePicture ? '/myorbit/profile/picture' : '/assets/icons/profileIcon.svg' %>"
+          alt="Foto Profil"
+        />
+      </div>
+
+      <table class="profile-table vertical">
+        <tbody>
+          <tr>
+            <th>Nama</th>
+            <td><%= data.namaProfile %></td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td><%= data.email %></td>
+          </tr>
+          <tr>
+            <th>Telepon</th>
+            <td><%= data.phoneNumber %></td>
+          </tr>
+          <tr>
+            <th>Kode Referral</th>
+            <td><%= data.codeReferral %></td>
+          </tr>
+          <tr>
+            <th>Valid From</th>
+            <td><%= moment(data.validFrom).format("DD MMMM YYYY") %></td>
+          </tr>
+          <tr>
+            <th>Valid Thru</th>
+            <td><%= moment(data.validThru).format("DD MMMM YYYY") %></td>
+          </tr>
+          <tr>
+            <th>Grapari</th>
+            <td><%= data.grapari %></td>
+          </tr>
+          <tr>
+            <th>Cluster</th>
+            <td><%= data.cluster %></td>
+          </tr>
+          <tr>
+            <th>Referral Group</th>
+            <td><%= data.referralGroup %></td>
+          </tr>
+          <tr>
+            <th>Branch</th>
+            <td><%= data.branch %></td>
+          </tr>
+          <tr>
+            <th>Region</th>
+            <td><%= data.region %></td>
+          </tr>
+          <tr>
+            <th>Area</th>
+            <td><%= data.area %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Modal CRUD Foto -->
+    <div class="modal-photo" id="photoModal">
+      <div class="modal-content">
+        <span class="close-btn" id="closeModalBtn">&times;</span>
+        <h3
+          style="
+            text-align: center;
+            color: var(--tc-red-dark);
+            font-family: 'TelkomselBatikSans';
+          "
+        >
+          <%= data.profilePicture ? "Edit Foto Profil" : "Tambah Foto Profil" %>
+        </h3>
+
+        <div
+          class="current-photo-preview"
+          style="text-align: center; margin: 15px 0"
+        >
+          <% if (data.profilePicture) { %>
+          <img
+            src="/myorbit/profile/picture"
+            alt="Foto Saat Ini"
+            style="width: 120px; height: 120px; border-radius: 50%"
+          />
+          <% } else { %>
+          <img
+            src="/assets/icons/profileIcon.svg"
+            alt="Foto Default"
+            style="width: 120px; height: 120px"
+          />
+          <% } %>
+        </div>
+
+        <!-- Form Upload / Ganti -->
+        <form
+          action="/myorbit/profile/picture"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <!-- Tombol Pilih File Kustom -->
+          <label for="photoInput" class="btn-custom-upload">Pilih File</label>
+          <input
+            type="file"
+            id="photoInput"
+            name="photo"
+            accept="image/*"
+            required
+          />
+
+          <!-- Tombol Submit -->
+          <button
+            type="submit"
+            class="btn-primary"
+            style="width: 100%; margin-top: 10px"
+          >
+            <%= data.profilePicture ? "Ganti Foto" : "Upload Foto" %>
+          </button>
+        </form>
+
+        <!-- Form Hapus -->
+        <% if (data.profilePicture) { %>
+        <form
+          action="/myorbit/profile/picture/delete"
+          method="POST"
+          style="margin-top: 10px"
+        >
+          <button
+            type="submit"
+            style="
+              background-color: red;
+              color: white;
+              padding: 10px;
+              border: none;
+              width: 100%;
+              border-radius: 6px;
+            "
+          >
+            Hapus Foto
+          </button>
+        </form>
+        <% } %>
+      </div>
+    </div>
+
+    <script src="/js/profileInfo.js"></script>
+  </body>
+</html>
